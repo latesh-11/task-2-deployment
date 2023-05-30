@@ -50,7 +50,7 @@ pipeline{
                         }
                         if(apply){
                             sh """ 
-                             ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'kubectl apply -f .'
+                             ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 './kubectl apply -f .'
                          """
                          }
                     }
@@ -75,6 +75,8 @@ pipeline{
                         } 
                         if(destroy){
                             sh """
+                                ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'git clone https://github.com/latesh-11/task-2-deployment.git'
+                                ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'cd task-2-deployment/'
                                 ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'kubectl delete -f .'
                                 """
                         }
