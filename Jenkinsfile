@@ -50,7 +50,7 @@ pipeline{
                         }
                         if(apply){
                             sh """
-                                ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'cd task-2-deployment/'
+                                ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 "cd task-2-deployment/"
                                 ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'pwd'
                                 ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'kubectl apply -f main.yaml'
                          """
