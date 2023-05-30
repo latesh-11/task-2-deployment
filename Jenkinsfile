@@ -20,7 +20,7 @@ pipeline{
 
                 sshagent(['EC2-ssh']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no -l USERNAME 172.31.14.75 'whoami'
+                        ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'whoami'
                     """
                 }
             }
