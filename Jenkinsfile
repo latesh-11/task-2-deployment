@@ -38,23 +38,22 @@ pipeline{
                 echo "========executing eks deploy========"
                
                 sshagent(['EC2-ssh']) {
-                    dir('/home/ubuntu/task-2-deployment') {
-                        script{
-                            def apply = false
-                            try{
-                                input massage: 'please confirm the apply to initita the deployments', ok: 'Ready to apply the config'
-                                apply = true
-                            }
-                            catch(err){
-                                apply = false
-                                CurrentBuild.result = 'UNSTABLE'
-                            }
-                            if(apply){
-                                sh """
-                                    ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'kubectl apply -f main.yaml'
-                             """
-                             }
+                    script{
+                        def apply = false
+                        try{
+                            input massage: 'please confirm the apply to initita the deployments', ok: 'Ready to apply the config'
+                            apply = true
                         }
+                        catch(err){
+                            apply = false
+                            CurrentBuild.result = 'UNSTABLE'
+                        }
+                        if(apply){
+                            sh """
+                                ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 "cd /home/ubuntu/task-2-deployment && kubectl apply -f . "
+            
+                         """
+                         }
                     }
                 }
             }
