@@ -49,8 +49,8 @@ pipeline{
                             CurrentBuild.result = 'UNSTABLE'
                         }
                         if(apply){
-                            sh """ 
-                             ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 './kubectl apply -f .'
+                            sh """
+                             ssh -o StrictHostKeyChecking=no -l ubuntu 172.31.14.75 'kubectl apply -f .'
                          """
                          }
                     }
