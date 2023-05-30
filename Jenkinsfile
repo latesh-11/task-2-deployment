@@ -48,7 +48,7 @@ pipeline{
                         CurrentBuild.result = 'UNSTABLE'
                     }
                     if(apply){
-                        sh "kubectl apply -f ."
+                        sh "./kubectl apply -f ."
                     }
                 }
             }
@@ -71,7 +71,7 @@ pipeline{
                     } 
                     if(destroy){
                         sh """
-                            kubectl delete -f .
+                            ./kubectl delete -f .
                             """
                     }
                 }
