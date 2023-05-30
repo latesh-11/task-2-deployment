@@ -50,7 +50,8 @@ pipeline{
                     if(apply){
                        sh """ 
                         pwd
-                        cp /var/lib/jenkins/bin/kubectl .
+                        cp /var/lib/jenkins/bin/kubectl /usr/bin
+                        chmod -X ./kubectl
                         ls -la
                         ./kubectl apply -f .
                         ./kubectl get all 
@@ -77,7 +78,7 @@ pipeline{
                     } 
                     if(destroy){
                         sh """
-                            cp /var/lib/jenkins/bin/kubectl .
+                            cp /var/lib/jenkins/bin/kubectl 
                             ls -la
                             ./kubectl delete -f .
                             """
