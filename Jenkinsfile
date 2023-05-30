@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     parameters{
-        choice ( name: 'action', choice: [ 'create' , 'destroy' ] , description: 'Do you want to create or destroy deployment')
+        choice ( name: 'action', choices: [ 'create' , 'destroy' ] , description: 'Do you want to create or destroy deployment')
         string(name: 'cluster_name' , defaultValue: 'myEKS' , description: 'EKS cluster name')
         string(name: 'aws_region' , defaultValue: 'ap-northeast-1' , description: 'EKS cluster region')
     }
