@@ -49,6 +49,7 @@ pipeline{
                     }
                     if(apply){
                        sh """ 
+                        pwd
                         cp /var/lib/jenkins/bin/kubectl .
                         ls -la
                         ./kubectl apply -f .
