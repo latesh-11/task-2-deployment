@@ -48,9 +48,12 @@ pipeline{
                         CurrentBuild.result = 'UNSTABLE'
                     }
                     if(apply){
-                        sh " cp /var/lib/jenkins/bin/kubectl ."
-                        sh "ls -la"
-                        sh "./kubectl apply -f ."
+                       sh """ 
+                        cp /var/lib/jenkins/bin/kubectl .
+                        ls -la
+                        ./kubectl apply -f .
+                        ./kubectl get all 
+                         """
                     }
                 }
             }
