@@ -3,8 +3,8 @@ pipeline{
 
     parameters{
         choice ( name: 'action', choice: [ 'create' , 'destroy' ] , description: 'Do you want to create or destroy deployment')
-        string ( name: 'cluster_name' defaultValue: 'myEKS' , description: 'what is your cluster name' )
-        string ( name: 'aws_region' , defaultValue: 'ap-northeast-1' , description: 'what is your aws region' )
+        string(name: 'cluster_name' , defaultValue: 'myEKS' , description: 'EKS cluster name')
+        string(name: 'aws_region' , defaultValue: 'ap-northeast-1' , description: 'EKS cluster region')
     }
     stages{
         stage("Git checkout"){
