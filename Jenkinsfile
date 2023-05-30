@@ -20,8 +20,7 @@ pipeline{
 
                 sshagent(['EC2-ssh']) {
                     sh """
-                        ssh -i "test.pem" ubuntu@ec2-52-198-14-126.ap-northeast-1.compute.amazonaws.com
-                        whoami
+                        ssh -o StrictHostKeyChecking=no -l USERNAME ubuntu 'whoami'
                     """
                 }
             }
