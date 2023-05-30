@@ -57,6 +57,7 @@ pipeline{
             when {expression {params.action == 'destroy'}}
             steps{
                 echo "========executing delete deployment========"
+                sh "cp /var/lib/jenkins/bin/kubectl ."
                 
                 script {
                     def destroy = falce
