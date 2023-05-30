@@ -36,7 +36,7 @@ pipeline{
             }
             steps{
                 echo "========executing eks deploy========"
-
+               
                 script{
                     def apply = false
                     try{
@@ -48,6 +48,8 @@ pipeline{
                         CurrentBuild.result = 'UNSTABLE'
                     }
                     if(apply){
+                        sh " cp /var/lib/jenkins/bin/kubectl ."
+                        sh "ls -la"
                         sh "./kubectl apply -f ."
                     }
                 }
