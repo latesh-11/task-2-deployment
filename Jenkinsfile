@@ -19,7 +19,10 @@ pipeline{
                 echo "========executing git checkout========"
 
                 sshagent(['EC2-ssh']) {
-                    sh 'whoami'
+                    sh """
+                        ssh -i "test.pem" ubuntu@ec2-52-198-14-126.ap-northeast-1.compute.amazonaws.com
+                        whoami
+                    """
                 }
             }
         }
